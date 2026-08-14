@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Graph Explorer</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 2rem; background-color: #f8f9fa; }
+        .card { background: #ffffff; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .badge { background: #e2e8f0; color: #2d3748; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.875rem; margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem; }
+        .error { color: #e53e3e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Student Graph Database Explorer</h1>
+
+    {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+    {% if students_list %}
+        <h2>Students & Course Enrollments</h2>
+        {% for student in students_list %}
+            <div class="card">
+                <h3>{{ student.name }} (ID: {{ student.id }})</h3>
+                <p><strong>GPA:</strong> {{ student.gpa }}</p>
+                <p><strong>Enrolled Courses:</strong></p>
+                <div>
+                    {% for course in student.courses %}
+                        <span class="badge">{{ course }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No student graph records found.</p>
+    {% endif %}
+</body>
+</html>

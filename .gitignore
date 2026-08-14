@@ -1,0 +1,8 @@
+# Created by https://www.gitignore.io/api/osx,venv,macos,linux,python,django,pycharm,virtualenv
+
+### Django Ignore ###
+__pycache__/
+venv/
+static/
+.idea
+migrations
